@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #2f2d38;
+    --bg-color: #2c293a;
 }
 
 @font-face {
@@ -23,6 +23,7 @@ html {
 
 body {
     background: var(--bg-color);
+    background: linear-gradient(135deg, #2c293a 20%, #3d1a4a);
     font-family: 'Roboto Regular', system-ui;
     text-rendering: optimizeLegibility;
 }
