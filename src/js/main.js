@@ -1,11 +1,14 @@
-import { AUDIO_ELEMENT } from './dom-elements'
+import { AUDIO_ELEMENT, IMAGE_ELEMENT } from './dom-elements'
 import { setAudioCtx, useFrequency } from './audio-freq-handler'
+import './image-file-handler'
 
 let freqInterval = null
 
 function intervalFunction () {
   useFrequency((freqArray) => {
-    console.log(freqArray)
+    const freqSelected = freqArray[10]
+    IMAGE_ELEMENT.style.filter = `brightness(${(freqSelected / 100) - 1.0}) blur(${(freqSelected / 100) - 1.10}px)`
+    IMAGE_ELEMENT.style.transform = `scale(1.${parseInt(freqSelected / 100)}) rotate(${(freqSelected / 100) + 1}deg)`
   })
 }
 
