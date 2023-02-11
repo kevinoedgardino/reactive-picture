@@ -23,7 +23,6 @@ html {
 
 body {
     background: var(--bg-color);
-    background: linear-gradient(135deg, #2c293a 20%, #3d1a4a);
     font-family: 'Roboto Regular', system-ui;
     text-rendering: optimizeLegibility;
 }
@@ -77,6 +76,11 @@ body {
     font-weight: bold;
 }
 
+.file-inputs-container > div > input {
+    width: 100px;
+    color: transparent;
+}
+
 .main-screen {
     display: flex;
     flex-direction: column;
@@ -84,17 +88,31 @@ body {
 }
 
 .picture-show {
-    max-width: 95%;
-    max-height: 40rem;
+    width: 95%;
+    height: 40rem;
     margin: 1rem auto 1rem auto;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 5px #17151c;
+}
+
+.picture-show-cover::before {
+    content: 'Your image will be shown here.';
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-style: italic;
 }
 
 .picture-show > img {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: fill;
-    border-radius: 1rem;
-    box-shadow: 2px 2px 5px #17151c;
+    object-fit: contain;
+    transition: all .2s;
 }
 
 .audio-show {
