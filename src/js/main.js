@@ -1,14 +1,19 @@
 import { AUDIO_ELEMENT, IMAGE_ELEMENT } from './dom-elements'
 import { setAudioCtx, useFrequency } from './audio-freq-handler'
+import { cssFilterValues } from './css-filter-values'
 import './image-file-handler'
 
 let freqInterval = null
 
 function intervalFunction () {
   useFrequency((freqArray) => {
-    const freqSelected = freqArray[10]
-    IMAGE_ELEMENT.style.filter = `brightness(${(freqSelected / 100) - 1.0}) blur(${(freqSelected / 100) - 1.10}px)`
-    IMAGE_ELEMENT.style.transform = `scale(1.${parseInt(freqSelected / 100)}) rotate(${(freqSelected / 100) + 1}deg)`
+    IMAGE_ELEMENT.style.filter = `
+      brightness(${cssFilterValues.getBrightness(freqArray)}%)
+      blur(${cssFilterValues.getBlur(freqArray)}px)
+    `
+    IMAGE_ELEMENT.style.transform = `
+      scale(${cssFilterValues.getScale(freqArray)})
+    `
   })
 }
 
@@ -19,3 +24,4 @@ AUDIO_ELEMENT.onplay = () => {
 
 AUDIO_ELEMENT.onpause = () => clearInterval(freqInterval)
 AUDIO_ELEMENT.onended = () => clearInterval(freqInterval)
+AUDIO_ELEMENT.onchange = () => clearInterval(freqInterval)
