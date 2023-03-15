@@ -3,25 +3,35 @@ import { setAudioCtx, useFrequency } from './audio-freq-handler'
 import { cssFilterValues } from './css-filter-values'
 import './image-file-handler'
 
-let freqInterval = null
+let animationFrame = null
 
-function intervalFunction () {
+function applyImageSettings () {
   useFrequency((freqArray) => {
-    IMAGE_ELEMENT.style.filter = `
+    const filterStyles = `
       brightness(${cssFilterValues.getBrightness(freqArray)}%)
       blur(${cssFilterValues.getBlur(freqArray)}px)
     `
-    IMAGE_ELEMENT.style.transform = `
+    const transformStyles = `
       scale(${cssFilterValues.getScale(freqArray)})
+      rotate(${cssFilterValues.getRotate(freqArray)}deg)
     `
+
+    IMAGE_ELEMENT.style.filter = filterStyles
+    IMAGE_ELEMENT.style.transform = transformStyles
   })
 }
 
 AUDIO_ELEMENT.onplay = () => {
   setAudioCtx()
-  freqInterval = setInterval(intervalFunction, 1)
+
+  const refreshImage = () => {
+    applyImageSettings()
+    animationFrame = window.requestAnimationFrame(refreshImage)
+  }
+
+  refreshImage()
 }
 
-AUDIO_ELEMENT.onpause = () => clearInterval(freqInterval)
-AUDIO_ELEMENT.onended = () => clearInterval(freqInterval)
-AUDIO_ELEMENT.onchange = () => clearInterval(freqInterval)
+AUDIO_ELEMENT.onpause = () => window.cancelAnimationFrame(animationFrame)
+AUDIO_ELEMENT.onended = () => window.cancelAnimationFrame(animationFrame)
+AUDIO_ELEMENT.onchange = () => window.cancelAnimationFrame(animationFrame)
