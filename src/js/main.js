@@ -2,6 +2,10 @@ import { AUDIO_ELEMENT, IMAGE_ELEMENT } from './dom-elements'
 import { setAudioCtx, useFrequency } from './audio-freq-handler'
 import { cssFilterValues } from './css-filter-values'
 import './image-file-handler'
+import { setSliderEvents, setSliderValues } from './sliders'
+
+setSliderEvents()
+setSliderValues()
 
 let animationFrame = null
 
@@ -10,6 +14,7 @@ function applyImageSettings () {
     const filterStyles = `
       brightness(${cssFilterValues.getBrightness(freqArray)}%)
       blur(${cssFilterValues.getBlur(freqArray)}px)
+      hue-rotate(${cssFilterValues.getHueRotate(freqArray)}deg)
     `
     const transformStyles = `
       scale(${cssFilterValues.getScale(freqArray)})
@@ -23,7 +28,6 @@ function applyImageSettings () {
 
 AUDIO_ELEMENT.onplay = () => {
   setAudioCtx()
-
   const refreshImage = () => {
     applyImageSettings()
     animationFrame = window.requestAnimationFrame(refreshImage)
