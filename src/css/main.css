@@ -128,3 +128,34 @@ body {
 .aside-tools {
     
 }
+
+.heading-title-container h3 {
+    font-size: 1.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+.slider-settings {
+    margin: 1rem;
+}
+
+.slider-settings > div {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 1.5rem;
+}
+
+.slider-settings > div > label {
+    font-size: 1.5rem;
+    color: #b6b6b6;
+}
+
+@media (max-width: 800px) {
+    .container {
+        display: grid;
+        grid-template-columns: none;
+        width: 100%;
+        height: 100vh;
+    }
+}
