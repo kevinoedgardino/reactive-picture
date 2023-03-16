@@ -12,11 +12,12 @@ AUDIO_FILE_ELEMENT.onchange = () => {
 
 let audioCtx = null
 let analyser = null
+let source = null
 
 export function setAudioCtx () {
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)()
-  analyser = audioCtx.createAnalyser()
-  const source = audioCtx.createMediaElementSource(AUDIO_ELEMENT)
+  audioCtx ||= new (window.AudioContext || window.webkitAudioContext)()
+  analyser ||= audioCtx.createAnalyser()
+  source ||= audioCtx.createMediaElementSource(AUDIO_ELEMENT)
   source.connect(analyser)
   analyser.connect(audioCtx.destination)
 }
