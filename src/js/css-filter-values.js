@@ -41,7 +41,7 @@ export const cssFilterValues = {
     }
 
     this.previousBassAverage = bassAverage
-    return brightness
+    return this.brightness < 1 ? 100 : brightness
   },
 
   setBlur (value) {

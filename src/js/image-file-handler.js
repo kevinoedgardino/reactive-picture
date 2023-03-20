@@ -5,4 +5,5 @@ IMAGE_FILE_ELEMENT.onchange = () => {
   const reader = new FileReader()
   reader.onload = (e) => { IMAGE_ELEMENT.src = e.target.result }
   reader.readAsDataURL(IMAGE_FILE_ELEMENT.files[0])
+  document.querySelector('.picture-show').classList.remove('picture-show-cover')
 }
