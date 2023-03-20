@@ -1,5 +1,5 @@
 import { AUDIO_ELEMENT, HUE_CHECKBOX_ELEMENT, IMAGE_ELEMENT } from './dom-elements'
-import { setAudioCtx, useFrequency } from './audio-freq-handler'
+import { useFrequency } from './audio-freq-handler'
 import { cssFilterValues } from './css-filter-values'
 import './image-file-handler'
 import { setSliderEvents, setSliderValues } from './sliders'
@@ -31,7 +31,7 @@ function applyImageSettings () {
 }
 
 AUDIO_ELEMENT.onplay = () => {
-  const isImgAudioSelected = Boolean(IMAGE_ELEMENT.src)
+  const isImgAudioSelected = Boolean(IMAGE_ELEMENT.src && AUDIO_ELEMENT.src)
 
   /* eslint brace-style: ["error", stroustrup] */
   if (!isImgAudioSelected) {
@@ -39,8 +39,6 @@ AUDIO_ELEMENT.onplay = () => {
     AUDIO_ELEMENT.pause()
   }
   else {
-    setAudioCtx()
-
     const refreshImage = () => {
       applyImageSettings()
       animationFrame = window.requestAnimationFrame(refreshImage)
