@@ -4,10 +4,7 @@ function getFreqData ({ freqArray = [0], sliceParams = [0, 0] }) {
   const bassArray = freqArray.slice(from, to)
   const arrayLength = bassArray.length
 
-  let bassAmplitude = 0
-  bassArray.forEach(function (value) {
-    bassAmplitude += value
-  })
+  const bassAmplitude = bassArray.reduce((acc, cur) => acc + cur, 0)
 
   return { bassAmplitude, arrayLength }
 }
@@ -87,8 +84,8 @@ export const cssFilterValues = {
     const bassAverage = bassAmplitude / arrayLength
     const normalizedFrequency = bassAverage / 255
     const maxRotate = 180
-    const minRotate = 0
-    const scaleRotate = this.rotate / 100 // convert this.rotate to a scale from 0 to 1
+    const minRotate = -180
+    const scaleRotate = (this.rotate - 50) / 50 // convert this.rotate to a scale from -1 to 1
     let rotate = normalizedFrequency * scaleRotate * maxRotate
     rotate = Math.min(maxRotate, Math.max(minRotate, rotate))
     rotate = Math.floor(rotate)
