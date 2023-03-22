@@ -57,7 +57,6 @@ function setSliderEvents () {
   ROTATION_SLIDER_ELEMENT.oninput = (e) => {
     const { value: rotateSliderValue } = e.target
     const rotation = -(rotateSliderValue - (rotateSliderValue - (50 - rotateSliderValue)))
-    console.log(rotation, rotateSliderValue)
     cssFilterValues.setRotate(rotateSliderValue)
     assignLabelTextValue(ROTATION_LABEL_ELEMENT, rotation)
   }
