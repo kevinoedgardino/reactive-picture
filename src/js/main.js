@@ -33,7 +33,6 @@ function applyImageSettings () {
 AUDIO_ELEMENT.onplay = () => {
   const isImgAudioSelected = Boolean(IMAGE_ELEMENT.src && AUDIO_ELEMENT.src)
 
-  /* eslint brace-style: ["error", stroustrup] */
   if (!isImgAudioSelected) {
     Swal.fire('Error', 'You must select an image and audio file to continue', 'error') // eslint-disable-line
     AUDIO_ELEMENT.pause()

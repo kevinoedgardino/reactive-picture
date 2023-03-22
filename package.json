@@ -15,6 +15,9 @@
   "eslintConfig": {
     "extends": [
       "./node_modules/standard/eslintrc.json"
-    ]
+    ],
+    "rules": {
+      "brace-style": ["error", "stroustrup"]
+    }
   }
 }

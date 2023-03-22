@@ -23,7 +23,9 @@ function useFrequency (handlerFunction) {
 AUDIO_FILE_ELEMENT.onchange = () => {
   // eslint-disable-next-line no-undef
   const reader = new FileReader()
-  reader.onload = (e) => { AUDIO_ELEMENT.src = e.target.result }
+  reader.onload = (e) => {
+    AUDIO_ELEMENT.src = e.target.result
+  }
   reader.readAsDataURL(AUDIO_FILE_ELEMENT.files[0])
   setAudioCtx()
 }
