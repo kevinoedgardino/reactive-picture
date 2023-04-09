@@ -171,7 +171,7 @@ footer h4 {
     font-weight: lighter;
 }
 
-footer > h4 > span:nth-child(1) {
+.author-one {
     background: #FFF236;
     background: radial-gradient(circle at left center, #E9EE29 0%, #FFF5C4 93%);
     background-clip: text;
@@ -180,13 +180,41 @@ footer > h4 > span:nth-child(1) {
 
 }
 
-footer > h4 > span:nth-child(2) {
+.author-two {
     background: #0DB928;
     background: radial-gradient(circle at left center, #0DB928 14%, #0DB928 5%, #D1FFC4 90%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-position: 0% 100%;
+}
 
+.author-one-active {
+    background: linear-gradient(-45deg, #E9EE29, #db1414, #297bee, #23d52f, #ee4a29);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+    background-size: 400% 400%;
+	animation: gradient-one 2s linear reverse infinite;
+}
+
+.author-two-active {
+    background: linear-gradient(-45deg, #de0000, #fe622c, #fef600, #00bc00, #009cfe, #000084, #2c009c);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+    background-size: 400% 400%;
+	animation: gradient-two 3s linear infinite;
+}
+
+@keyframes gradient-one {
+	to {
+        background-position: 100% center;
+    }
+}
+
+@keyframes gradient-two {
+	to {
+        background-position: 100% center;
+    }
 }
 
 @media (max-width: 800px) {

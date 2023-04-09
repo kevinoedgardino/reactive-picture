@@ -30,6 +30,24 @@ function applyImageSettings () {
   })
 }
 
+/**
+ * @param { 'start' | 'stop' } action
+ */
+const authorEasterEgg = (action) => {
+  if (action === 'start') {
+    document.querySelector('.author-one').classList.add('author-one-active')
+    document.querySelector('.author-one-active').classList.remove('author-one')
+    document.querySelector('.author-two').classList.add('author-two-active')
+    document.querySelector('.author-two-active').classList.remove('author-two')
+  }
+  else if (action === 'stop') {
+    document.querySelector('.author-one-active').classList.add('author-one')
+    document.querySelector('.author-one').classList.remove('author-one-active')
+    document.querySelector('.author-two-active').classList.add('author-two')
+    document.querySelector('.author-two').classList.remove('author-two-active')
+  }
+}
+
 AUDIO_ELEMENT.onplay = () => {
   const isImgAudioSelected = Boolean(IMAGE_ELEMENT.src && AUDIO_ELEMENT.src)
 
@@ -38,6 +56,7 @@ AUDIO_ELEMENT.onplay = () => {
     AUDIO_ELEMENT.pause()
   }
   else {
+    authorEasterEgg('start')
     const refreshImage = () => {
       applyImageSettings()
       animationFrame = window.requestAnimationFrame(refreshImage)
@@ -47,6 +66,15 @@ AUDIO_ELEMENT.onplay = () => {
   }
 }
 
-AUDIO_ELEMENT.onpause = () => window.cancelAnimationFrame(animationFrame)
-AUDIO_ELEMENT.onended = () => window.cancelAnimationFrame(animationFrame)
-AUDIO_ELEMENT.onchange = () => window.cancelAnimationFrame(animationFrame)
+AUDIO_ELEMENT.onpause = () => {
+  window.cancelAnimationFrame(animationFrame)
+  authorEasterEgg('stop')
+}
+AUDIO_ELEMENT.onended = () => {
+  window.cancelAnimationFrame(animationFrame)
+  authorEasterEgg('stop')
+}
+AUDIO_ELEMENT.onchange = () => {
+  window.cancelAnimationFrame(animationFrame)
+  authorEasterEgg('stop')
+}
