@@ -1,6 +1,6 @@
 import { AUDIO_ELEMENT, HUE_CHECKBOX_ELEMENT, IMAGE_ELEMENT } from './dom-elements'
 import { useFrequency } from './audio-freq-handler'
-import { getBrightness, getBlur, getScale, getRotate, getHueRotate } from './css-filter-values'
+import { cssFilterValues } from './css-filter-values'
 import './image-file-handler'
 import { setSliderEvents, setSliderValues } from './sliders'
 
@@ -16,13 +16,13 @@ HUE_CHECKBOX_ELEMENT.onclick = (e) => {
 function applyImageSettings () {
   useFrequency((freqArray) => {
     const filterStyles = `
-      brightness(${getBrightness(freqArray)}%)
-      blur(${getBlur(freqArray)}px)
-      hue-rotate(${hueRotateEnabled ? getHueRotate(freqArray) : 0}deg)
+      brightness(${cssFilterValues.getBrightness(freqArray)}%)
+      blur(${cssFilterValues.getBlur(freqArray)}px)
+      hue-rotate(${hueRotateEnabled ? cssFilterValues.getHueRotate(freqArray) : 0}deg)
     `
     const transformStyles = `
-      scale(${getScale(freqArray)})
-      rotate(${getRotate(freqArray)}deg)
+      scale(${cssFilterValues.getScale(freqArray)})
+      rotate(${cssFilterValues.getRotate(freqArray)}deg)
     `
 
     IMAGE_ELEMENT.style.filter = filterStyles

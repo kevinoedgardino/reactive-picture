@@ -8,7 +8,7 @@ import {
   SCALE_LABEL_ELEMENT,
   ROTATION_LABEL_ELEMENT
 } from './dom-elements'
-import { setBrightness, setBlur, setScale, setRotate } from './css-filter-values'
+import { cssFilterValues } from './css-filter-values'
 
 const assignLabelTextValue = (elm, value) => {
   elm.firstChild.nodeValue = value
@@ -21,10 +21,10 @@ function setSliderValues () {
   const rotate = ROTATION_SLIDER_ELEMENT.value
   const modifiedRotateValue = -(rotate - (rotate - (50 - rotate)))
 
-  setBrightness(brightness)
-  setBlur(blur)
-  setScale(scale)
-  setRotate(rotate)
+  cssFilterValues.setBrightness(brightness)
+  cssFilterValues.setBlur(blur)
+  cssFilterValues.setScale(scale)
+  cssFilterValues.setRotate(rotate)
 
   assignLabelTextValue(BRIGHTNESS_LABEL_ELEMENT, brightness)
   assignLabelTextValue(BLUR_LABEL_ELEMENT, blur)
@@ -36,28 +36,28 @@ function setSliderEvents () {
   BRIGHTNESS_SLIDER_ELEMENT.oninput = (e) => {
     const { value: brightnessSliderValue } = e.target
 
-    setBrightness(brightnessSliderValue)
+    cssFilterValues.setBrightness(brightnessSliderValue)
     assignLabelTextValue(BRIGHTNESS_LABEL_ELEMENT, brightnessSliderValue)
   }
 
   BLUR_SLIDER_ELEMENT.oninput = (e) => {
     const { value: blurSliderValue } = e.target
 
-    setBlur(blurSliderValue)
+    cssFilterValues.setBlur(blurSliderValue)
     assignLabelTextValue(BLUR_LABEL_ELEMENT, blurSliderValue)
   }
 
   SCALE_SLIDER_ELEMENT.oninput = (e) => {
     const { value: scaleSliderValue } = e.target
 
-    setScale(scaleSliderValue)
+    cssFilterValues.setScale(scaleSliderValue)
     assignLabelTextValue(SCALE_LABEL_ELEMENT, scaleSliderValue)
   }
 
   ROTATION_SLIDER_ELEMENT.oninput = (e) => {
     const { value: rotateSliderValue } = e.target
     const rotation = -(rotateSliderValue - (rotateSliderValue - (50 - rotateSliderValue)))
-    setRotate(rotateSliderValue)
+    cssFilterValues.setRotate(rotateSliderValue)
     assignLabelTextValue(ROTATION_LABEL_ELEMENT, rotation)
   }
 }
