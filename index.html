@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="robots" content="index, follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Reactive Picture</title>
+		<meta name="description" content="Choose a picture and make it react to music!">
+		<link rel="icon" href="/reactive-picture.svg" type="image/svg+xml">
+		
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script type="module" crossorigin src="/assets/index-25714c21.js"></script>
+		<link rel="stylesheet" href="/assets/index-c64000d9.css">
+	</head>
+	<body>
+		<div class="container">
+			<aside class="aside-media">
+				<div class="heading-title-container">
+					<h1>Reactive Picture</h1>
+					<h2>Choose a picture from your gallery and make it react to the music!.</h2>
+				</div>
+				<section class="file-inputs-container">
+					<div>
+						<label for="file-image">Select an image file.</label>
+						<input type="file" name="picture" id="file-image" accept=".jpeg,.jpg,.png,.gif" />
+					</div>
+					<div>
+						<label for="file-audio">Select an audio file.</label>
+						<input type="file" name="audio" id="file-audio" accept=".mp3,.m4a,.flac" />
+					</div>
+				</section>
+			</aside>
+			<main class="main-screen">
+				<section class="picture-show picture-show-cover">
+					<img id="picture" alt="" />
+				</section>
+				<section class="audio-show">
+					<audio controls id="audio"></audio>
+				</section>
+			</main>
+			<aside class="aside-tools">
+				<div class="heading-title-container">
+					<h3>Image Settings</h3>
+				</div>
+				<div class="slider-settings">
+					<div>
+						<label for="brightness">Brightness (<span id="brightness-value">0</span>%)</label>
+						<input type="range" name="brightness-slider" id="brightness" min="0" max="100" value="0">
+					</div>
+					<div>
+						<label for="blur">Blur (<span id="blur-value">0</span>px)</label>
+  						<input type="range" name="blur-slider" id="blur" min="0" max="10" value="0">
+					</div>
+					<div>
+						<label for="scale">Scale (<span id="scale-value">0</span>)</label>
+  						<input type="range" name="scale-slider" id="scale" min="0" max="20" value="5">
+					</div>
+					<div>
+						<label for="rotate">Rotation (<span id="rotate-value">0</span>)</label>
+						<input type="range" name="rotate-slider" id="rotate" min="0" max="100" value="50">
+					</div>
+					<div>
+						<label for="hue">Hue Rotate</label>
+						<input type="checkbox" name="hue-checkbox" id="hue">
+					</div>
+				</div>
+			</aside>
+		</div>
+		<footer>
+			<h4>Developed by <span class="author-one">Kevin Chacón</span> & <span class="author-two">ChatGPT</span></h4>
+		</footer>
+		
+	</body>
+</html>
