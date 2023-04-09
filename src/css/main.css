@@ -128,10 +128,6 @@ body {
     box-shadow: 2px 2px 5px #17151c;
 }
 
-.aside-tools {
-    
-}
-
 .heading-title-container h3 {
     font-size: 1.9rem;
     font-weight: bold;
@@ -192,6 +188,7 @@ footer h4 {
 .author-one-active {
     background: linear-gradient(-45deg, #E9EE29, #db1414, #297bee, #23d52f, #ee4a29);
 	background-clip: text;
+    -webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
     background-size: 400% 400%;
 	animation: gradient-one 2s linear reverse infinite;
@@ -200,6 +197,7 @@ footer h4 {
 .author-two-active {
     background: linear-gradient(-45deg, #de0000, #fe622c, #fef600, #00bc00, #009cfe, #000084, #2c009c);
 	background-clip: text;
+    -webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
     background-size: 400% 400%;
 	animation: gradient-two 3s linear infinite;
